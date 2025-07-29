@@ -216,19 +216,6 @@ input_data = ...  # [batch, history, nodes, features]
 prediction = model(input_data, target_data, adjacency_matrix)
 ```
 
-## 📈 Performance
-
-### Benchmark (PEMS Dataset)
-| Metric | Value |
-|--------|--------|
-| MAPE | ~15% |
-| MAE  | ~2.5 |
-| RMSE | ~3.8 |
-
-### Training Time
-- **Device**: Apple M3 Pro
-- **Batch Size**: 32
-- **Training Time**: ~2 hours/50 epochs
 
 ## 🎛️ Advanced Features
 
