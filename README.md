@@ -1,4 +1,5 @@
-# SAST-GNN: Spatial-Temporal Graph Neural Network for Traffic Flow Prediction
+# SAST-GNN: Self-Attention based Spatio-Temporal Graph Neural Network for Traffic Flow Prediction (DASFAA 2020, https://dl.acm.org/doi/abs/10.1007/978-3-030-59410-7_49)
+
 
 ## 🚦 Project Overview
 
@@ -248,8 +249,3 @@ python scripts/hyperparameter_tuning.py
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-**Last Updated**: July 2025
-**Version**: 1.0.0
