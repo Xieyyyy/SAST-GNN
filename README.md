@@ -245,72 +245,9 @@ torch.save({
 python scripts/hyperparameter_tuning.py
 ```
 
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **CUDA Out of Memory**
-   - Reduce batch_size
-   - Use gradient accumulation
-   - Enable mixed precision training
-
-2. **Slow Data Loading**
-   - Use SSD storage
-   - Increase num_workers
-   - Preload data to memory
-
-3. **Model Not Converging**
-   - Adjust learning rate
-   - Check data normalization
-   - Increase training epochs
-
-### Debugging Tips
-
-```python
-# Enable detailed logging
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
-# Check data distribution
-print(dataset.get_stats())
-
-# Validate model architecture
-print(model)
-print(f"Total parameters: {sum(p.numel() for p in model.parameters()):,}")
-```
-
-## 📚 References
-
-1. **SAST-GNN: Spatial-Temporal Graph Neural Network**
-   - Hybrid architecture based on Transformer and GAT
-   - Suitable for urban traffic flow prediction
-
-2. **Graph Attention Networks**
-   - Veličković et al., ICLR 2018
-
-3. **Attention Is All You Need**
-   - Vaswani et al., NIPS 2017
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork this project
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Create Pull Request
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-For questions or suggestions, please contact:
-- Submit Issue
-- Email project maintainer
-- Participate in discussions
 
 ---
 
