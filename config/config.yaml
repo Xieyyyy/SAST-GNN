@@ -1,0 +1,68 @@
+# SAST-GNN Configuration File
+
+# Dataset Configuration
+dataset:
+  name: "PEMS"
+  node_num: 228
+  data_path: "../data/V_228.csv"
+  adj_path: "../data/W_228.csv"
+
+# Training Configuration
+training:
+  epochs: 5
+  batch_size:
+    train: 1
+    val: 1
+  learning_rate: 0.002
+  device: "mps"
+  
+# Data Configuration
+data:
+  n_train: 31
+  n_val: 9
+  n_test: 4
+  n_history: 12
+  n_prediction: 12
+  input_dim: 1
+  day_slot: 288
+
+# Model Architecture
+model:
+  temporal_module: "Transformer"  # Options: "Transformer", "LSTM"
+  spatial_module: "GAT"          # Options: "GAT"
+  dropout: 0.5
+  
+  # Upper Temporal Module (Transformer/LSTM)
+  upper_temporal:
+    hidden_dim: 512
+    num_layers: 3
+    features: 512
+    heads: 8
+    enc_layers: 3
+    dec_layers: 3
+    ff_dim: 512
+    unit: 1
+    
+  # Spatial Module (GAT)
+  spatial:
+    in_features: 512
+    out_features: 64
+    alpha: 0.2
+    heads: 8
+    hidden_dim: 64
+    
+  # Lower Temporal Module (Transformer/LSTM)
+  lower_temporal:
+    features: 64
+    hidden_dim: 64
+    num_layers: 3
+    heads: 8
+    enc_layers: 2
+    dec_layers: 2
+    ff_dim: 128
+
+# Paths
+paths:
+  model_save_path: "../models/"
+  log_path: "../logs/"
+  record_path: "../record/record_sin_tr_1212pems.txt"

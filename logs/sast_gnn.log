@@ -1,0 +1,85 @@
+2025-07-29 19:54:26,594 - src.main - INFO - Configuration loaded successfully
+2025-07-29 19:54:26,594 - src.main - INFO - Dataset: PEMS
+2025-07-29 19:54:26,594 - src.main - INFO - Model: Transformer + GAT
+2025-07-29 19:54:26,594 - src.main - INFO - Loading dataset...
+2025-07-29 19:54:26,594 - src.main - ERROR - Error: Data file not found: ../data/V_228.csv
+Traceback (most recent call last):
+  File "/Users/fffantast/Desktop/Rebuild/SAST-GNN/src/data/dataset.py", line 158, in load_dataset
+    data_sequence = pd.read_csv(file_path, header=None).values
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: '../data/V_228.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/fffantast/Desktop/Rebuild/SAST-GNN/src/main.py", line 88, in main
+    dataset = load_dataset(
+        file_path=config.dataset.data_path,
+    ...<4 lines>...
+        is_csv=True
+    )
+  File "/Users/fffantast/Desktop/Rebuild/SAST-GNN/src/data/dataset.py", line 165, in load_dataset
+    raise FileNotFoundError(f"Data file not found: {file_path}")
+FileNotFoundError: Data file not found: ../data/V_228.csv
+2025-07-29 19:59:07,454 - src.main - INFO - Configuration loaded successfully
+2025-07-29 19:59:07,454 - src.main - INFO - Dataset: PEMS
+2025-07-29 19:59:07,454 - src.main - INFO - Model: Transformer + GAT
+2025-07-29 19:59:07,454 - src.main - INFO - Loading dataset...
+2025-07-29 19:59:07,825 - src.data.dataset - INFO - Dataset loaded: train=8215, val=2385, test=1060
+2025-07-29 19:59:07,826 - src.data.dataset - INFO - Data statistics: mean=58.5666, std=13.6305
+2025-07-29 19:59:07,833 - src.main - INFO - Loading adjacency matrix...
+2025-07-29 19:59:07,866 - src.main - INFO - Creating model...
+2025-07-29 19:59:07,899 - src.main - INFO - Total parameters: 13,156,573
+2025-07-29 19:59:07,900 - src.main - INFO - Trainable parameters: 13,156,573
+2025-07-29 19:59:07,900 - src.main - ERROR - Error: Torch not compiled with CUDA enabled
+Traceback (most recent call last):
+  File "/Users/fffantast/Desktop/Rebuild/SAST-GNN/src/main.py", line 112, in main
+    trainer = SASTGNNTrainer(config, model)
+  File "/Users/fffantast/Desktop/Rebuild/SAST-GNN/src/training/trainer.py", line 95, in __init__
+    self.model.to(self.device)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ~~~~^
+        device,
+        ^^^^^^^
+        dtype if t.is_floating_point() or t.is_complex() else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        non_blocking,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/fffantast/Desktop/Rebuild/venv/lib/python3.13/site-packages/torch/cuda/__init__.py", line 363, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
